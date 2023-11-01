@@ -4,7 +4,7 @@ $headers = @{
     "Authorization" = "Token test"
 }
 
-$response = Invoke-RestMethod -Uri "https://usta.prodaft.com/api/threat-stream/phishing-sites?status=in_progress" -Headers $headers -Method Get
+$response = Invoke-RestMethod -Uri "https://usta.prodaft.com" -Headers $headers -Method Get
 
 $urls=$response.results.url
 $urls=$urls-replace "http://|https://", ""
@@ -61,7 +61,7 @@ foreach ($r in $response.results) {
 
 Write-Host `r`n$counter "Tane sonuç vardır"`r`n`r`n
 $outputData +="$counter Tane sonuç vardır`r`n"
-$outputData | Out-File -FilePath "Z:\moaslan\Usta loglayıcı\log.txt" -Append
+$outputData | Out-File -FilePath "Z:\log.txt" -Append
 
 
 
